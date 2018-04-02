@@ -15,7 +15,7 @@ echo ${reset}
  
 while IFS= read -r line; do
     echo "starting $line index in screen"
-    $(screen -mdS screen$i php bin/magento indexer:reindex $line)
+    $(screen -mdS screen$i php bin/magento -d memory_limit=-1 indexer:reindex $line)
     ((i++))
 done <<< "$input"
 
